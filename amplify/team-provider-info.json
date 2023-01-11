@@ -23,6 +23,12 @@
       },
       "api": {
         "blogregistrationapi": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d3a56t72vo5xn3",
+          "type": "manual"
+        }
       }
     }
   }

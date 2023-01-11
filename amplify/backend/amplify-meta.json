@@ -103,5 +103,11 @@
       "lastPushDirHash": "rRYk7OTsgKu1/aEfhR8U4FfOL+4="
     }
   },
-  "hosting": {}
+  "hosting": {
+    "amplifyhosting": {
+      "service": "amplifyhosting",
+      "providerPlugin": "awscloudformation",
+      "type": "manual"
+    }
+  }
 }
