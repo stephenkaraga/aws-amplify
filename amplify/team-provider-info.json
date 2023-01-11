@@ -13,7 +13,16 @@
     },
     "categories": {
       "function": {
-        "blogregfunction": {}
+        "blogregfunction": {
+          "deploymentBucketName": "amplify-registrationapp-dev-184923-deployment",
+          "s3Key": "amplify-builds/blogregfunction-76712f70456a73347642-build.zip"
+        }
+      },
+      "storage": {
+        "blogregistration": {}
+      },
+      "api": {
+        "blogregistrationapi": {}
       }
     }
   }

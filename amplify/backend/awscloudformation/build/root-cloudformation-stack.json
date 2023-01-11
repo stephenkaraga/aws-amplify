@@ -151,6 +151,64 @@
           "Ref": "UnauthRoleName"
         }
       }
+    },
+    "functionblogregfunction": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-registrationapp-dev-184923-deployment/amplify-cfn-templates/function/blogregfunction-cloudformation-template.json",
+        "Parameters": {
+          "deploymentBucketName": "amplify-registrationapp-dev-184923-deployment",
+          "s3Key": "amplify-builds/blogregfunction-76712f70456a73347642-build.zip",
+          "storageblogregistrationName": {
+            "Fn::GetAtt": [
+              "storageblogregistration",
+              "Outputs.Name"
+            ]
+          },
+          "storageblogregistrationArn": {
+            "Fn::GetAtt": [
+              "storageblogregistration",
+              "Outputs.Arn"
+            ]
+          },
+          "env": "dev"
+        }
+      }
+    },
+    "storageblogregistration": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-registrationapp-dev-184923-deployment/amplify-cfn-templates/storage/blogregistration-cloudformation-template.json",
+        "Parameters": {
+          "tableName": "blogregistration",
+          "partitionKeyName": "id",
+          "partitionKeyType": "S",
+          "sortKeyName": "email",
+          "sortKeyType": "S",
+          "env": "dev"
+        }
+      }
+    },
+    "apiblogregistrationapi": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-registrationapp-dev-184923-deployment/amplify-cfn-templates/api/blogregistrationapi-cloudformation-template.json",
+        "Parameters": {
+          "functionblogregfunctionName": {
+            "Fn::GetAtt": [
+              "functionblogregfunction",
+              "Outputs.Name"
+            ]
+          },
+          "functionblogregfunctionArn": {
+            "Fn::GetAtt": [
+              "functionblogregfunction",
+              "Outputs.Arn"
+            ]
+          },
+          "env": "dev"
+        }
+      }
     }
   }
 }

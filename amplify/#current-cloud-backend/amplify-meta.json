@@ -11,5 +11,97 @@
       "StackId": "arn:aws:cloudformation:us-east-1:607997929575:stack/amplify-registrationapp-dev-184923/424a1f10-870a-11ed-ab44-12a53179e535",
       "AmplifyAppId": "d3a56t72vo5xn3"
     }
-  }
+  },
+  "function": {
+    "blogregfunction": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "blogregistration",
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "attributeEnvMap": {
+            "Name": "TABLE_NAME",
+            "Arn": "TABLE_ARN"
+          }
+        }
+      ],
+      "lastBuildTimeStamp": "2023-01-11T20:21:07.409Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2023-01-11T20:21:10.300Z",
+      "distZipFilename": "blogregfunction-76712f70456a73347642-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-registrationapp-dev-184923-deployment",
+        "s3Key": "amplify-builds/blogregfunction-76712f70456a73347642-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-registrationapp-dev-184923-deployment/amplify-cfn-templates/function/blogregfunction-cloudformation-template.json",
+        "logicalId": "functionblogregfunction"
+      },
+      "lastPushTimeStamp": "2023-01-11T20:23:46.120Z",
+      "output": {
+        "LambdaExecutionRoleArn": "arn:aws:iam::607997929575:role/registrationappLambdaRolea38ac5f8-dev",
+        "Region": "us-east-1",
+        "Arn": "arn:aws:lambda:us-east-1:607997929575:function:blogregfunction-dev",
+        "Name": "blogregfunction-dev",
+        "LambdaExecutionRole": "registrationappLambdaRolea38ac5f8-dev"
+      },
+      "lastPushDirHash": "HCGnP6mY8FxgMd6xJ63cNBoK+/s="
+    }
+  },
+  "storage": {
+    "blogregistration": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-registrationapp-dev-184923-deployment/amplify-cfn-templates/storage/blogregistration-cloudformation-template.json",
+        "logicalId": "storageblogregistration"
+      },
+      "lastPushTimeStamp": "2023-01-11T20:23:46.120Z",
+      "output": {
+        "PartitionKeyName": "id",
+        "SortKeyName": "email",
+        "SortKeyType": "S",
+        "Region": "us-east-1",
+        "Arn": "arn:aws:dynamodb:us-east-1:607997929575:table/blogregistration-dev",
+        "StreamArn": "arn:aws:dynamodb:us-east-1:607997929575:table/blogregistration-dev/stream/2023-01-11T20:21:25.721",
+        "PartitionKeyType": "S",
+        "Name": "blogregistration-dev"
+      },
+      "lastPushDirHash": "ympmCvczieIa2IHxeaGt+Vwwnkg="
+    }
+  },
+  "api": {
+    "blogregistrationapi": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "blogregfunction",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ],
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-registrationapp-dev-184923-deployment/amplify-cfn-templates/api/blogregistrationapi-cloudformation-template.json",
+        "logicalId": "apiblogregistrationapi"
+      },
+      "lastPushTimeStamp": "2023-01-11T20:23:46.120Z",
+      "output": {
+        "ApiName": "blogregistrationapi",
+        "RootUrl": "https://8hq0n7eu1g.execute-api.us-east-1.amazonaws.com/dev",
+        "ApiId": "8hq0n7eu1g"
+      },
+      "lastPushDirHash": "rRYk7OTsgKu1/aEfhR8U4FfOL+4="
+    }
+  },
+  "hosting": {}
 }

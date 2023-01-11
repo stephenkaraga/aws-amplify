@@ -1,0 +1,26 @@
+{
+  "resourceName": "blogregistration",
+  "tableName": "blogregistration",
+  "partitionKey": {
+    "fieldName": "id",
+    "fieldType": "string"
+  },
+  "sortKey": {
+    "fieldName": "email",
+    "fieldType": "string"
+  },
+  "gsi": [
+    {
+      "name": "emailIndex",
+      "partitionKey": {
+        "fieldName": "email",
+        "fieldType": "string"
+      },
+      "sortKey": {
+        "fieldName": "id",
+        "fieldType": "string"
+      }
+    }
+  ],
+  "triggerFunctions": []
+}
